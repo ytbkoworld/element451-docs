@@ -1,5 +1,7 @@
 # Formulas for Import/Export
 
+Dev note: in progress...
+
 ## SQR
 
 A square root of `X` is a number `R` such that `R^2=X`.
@@ -266,4 +268,666 @@ OUTPUT: -4
 
 INPUT: FLOOR(3.2)
 OUTPUT: 3
+```
+
+## RND
+
+RND: RND() function generates a random number (double value) between 0 and 1.
+
+Usage example:
+
+```
+Name of the function: RND
+Number of parameters: 0
+Type of parameters: number
+
+INPUT: RND(1)
+OUTPUT: 1
+```
+
+## VAL
+
+VAL: VAL("3.1") = 3.1 Returns the floating point numeric value of the string argument.
+
+Usage example:
+
+```
+Name of the function: VAL
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: VAL(1)
+OUTPUT: 1
+```
+
+## POW
+
+VAL: VAL("3.1") = 3.1 Returns the floating point numeric value of the string argument.
+
+Usage example:
+
+```
+Name of the function: POW
+Number of parameters: 2
+Type of parameters: number, number
+
+INPUT: POW(1, 1)
+OUTPUT: 1
+```
+
+## LOGN
+
+LOGN: The LogN function returns the log base N of X. Example: LOGN(10, 100) = 2
+
+Usage example:
+
+```
+Name of the function: LOGN
+Number of parameters: 2
+Type of parameters: number, number
+
+INPUT: LOGN(1, 1)
+OUTPUT: 1
+```
+
+## MIN
+
+MIN: MIN(2, 3) is 2.
+
+Usage example:
+
+```
+Name of the function: MIN
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: MIN(1)
+OUTPUT: 1
+```
+
+## MAX
+
+MAX: MAX(2, 3) is 3.
+
+Usage example:
+
+```
+Name of the function: MAX
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: MAX(1)
+OUTPUT: 1
+```
+
+## MOD
+
+modulo
+
+Usage example:
+
+```
+Name of the function: MOD
+Number of parameters: 2
+Type of parameters: number, number
+
+INPUT: MOD(1, 1)
+OUTPUT: 1
+```
+
+## IF
+
+IF: The IF(b, case1, case2) function provides branching capability. If b is not 0, then it returns case1, else it returns case2. Behavior is similar to PHP's: <b>return b ? case1 : case2; If b==0 then case1 will not be Evaluated, and vice versa. Example: IF(HEIGHT, 3/HEIGHT, 3) will make sure 3/HEIGHT does not cause division by zero.
+
+Usage example:
+
+```
+Name of the function: IF
+Number of parameters: 3
+Type of parameters: bool, any, any
+
+INPUT: IF(1, 1, 1)
+OUTPUT: 1
+```
+
+## STRLEN
+
+STRLEN: STRLEN("abc") function returns the length of the string parameter. For example, for "abc" it returns 3.
+
+Usage example:
+
+```
+Name of the function: STRLEN
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: STRLEN(1)
+OUTPUT: 1
+```
+
+## STR
+
+STR: STR(123) function returns the string representation of the passed value: "123".
+
+Usage example:
+
+```
+Name of the function: STR
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: STR(1)
+OUTPUT: 1
+```
+
+## SUBSTR
+
+SUBSTR: SUBSTR("Hello", 1,3) function returns the substring just like PHP substr function. The first parameter is the string, the second parameter is which index (0 based) to start copying, and the last parameter is the number of characters to copy. For example, SUBSTR("Hello", 1,3) returns "ell".
+
+Usage example:
+
+```
+Name of the function: SUBSTR
+Number of parameters: 3
+Type of parameters: string, number, number
+
+INPUT: SUBSTR(1, 1, 1)
+OUTPUT: 1
+```
+
+## CONCAT
+
+CONCAT: CONCAT("abc","def",...) function returns the concatanated strings: "abcdef". There is no preset limit on the number of parameters.
+
+Usage example:
+
+```
+Name of the function: CONCAT
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: CONCAT(1)
+OUTPUT: 1
+```
+
+## TRIM
+
+TRIM: TRIM(" abc  ") function returns the trimmed version of the string parameter: " abc  " -> "abc".
+
+Usage example:
+
+```
+Name of the function: TRIM
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: TRIM(1)
+OUTPUT: 1
+```
+
+## RTRIM
+
+trim from right
+
+Usage example:
+
+```
+Name of the function: RTRIM
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: RTRIM(1)
+OUTPUT: 1
+```
+
+## LTRIM
+
+trim from left
+
+Usage example:
+
+```
+Name of the function: LTRIM
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: LTRIM(1)
+OUTPUT: 1
+```
+
+## CHR
+
+gets a character with the given ascii code
+
+Usage example:
+
+```
+Name of the function: CHR
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: CHR(1)
+OUTPUT: 1
+```
+
+## NUM
+
+tries to convert an expression to a number
+
+Usage example:
+
+```
+Name of the function: NUM
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: NUM(1)
+OUTPUT: 1
+```
+
+## SUM
+
+SUM: SUM(2,3,5,...) functions returns the sum of it's arguments. There is no preset limit on the number of parameters.
+
+Usage example:
+
+```
+Name of the function: SUM
+Number of parameters: 1
+Type of parameters: number
+
+INPUT: SUM(1)
+OUTPUT: 1
+```
+
+## UPPER
+
+UPPERCASE STRING
+
+Usage example:
+
+```
+Name of the function: UPPER
+Number of parameters: 1
+Type of parameters: $string
+
+INPUT: UPPER(1)
+OUTPUT: 1
+```
+
+## LOWER
+
+lowercase string
+
+Usage example:
+
+```
+Name of the function: LOWER
+Number of parameters: 1
+Type of parameters: $string
+
+INPUT: LOWER(1)
+OUTPUT: 1
+```
+
+## TITLECASE
+
+Title Case String
+
+Usage example:
+
+```
+Name of the function: TITLECASE
+Number of parameters: 1
+Type of parameters: $string
+
+INPUT: TITLECASE(1)
+OUTPUT: 1
+```
+
+## MATCH
+
+check if strings are the same
+
+Usage example:
+
+```
+Name of the function: MATCH
+Number of parameters: 2
+Type of parameters: $p1, $p2, $caseSensitve = 1
+
+INPUT: MATCH(1, 1)
+OUTPUT: 1
+```
+
+## PAD
+
+pads a given string to given length by given char
+
+Usage example:
+
+```
+Name of the function: PAD
+Number of parameters: 3
+Type of parameters: string, char, length
+
+INPUT: PAD(1)
+OUTPUT: 1
+```
+
+## DS_MAP
+
+luminous datasource mapping
+
+Usage example:
+
+```
+Name of the function: DS_MAP
+Number of parameters: 5
+Type of parameters: $input, $dataSource, $match, $output, $default
+
+INPUT: DS_MAP(1, 1, 1, 1, 1)
+OUTPUT: 1
+```
+
+## CEEB_MAP
+
+luminous ceeb mapping
+
+Usage example:
+
+```
+Name of the function: CEEB_MAP
+Number of parameters: 4
+Type of parameters: $input, $match, $output, $default
+
+INPUT: CEEB_MAP(1, 1, 1, 1)
+OUTPUT: 1
+```
+
+## CHECKBOX_FIRST
+
+on $json_input form array, finds first item/object with checked, and returns its text field, or an empty string, if not exists.
+
+Usage example:
+
+```
+Name of the function: CHECKBOX_FIRST
+Number of parameters: 1
+Type of parameters: $json_input
+
+INPUT: CHECKBOX_FIRST(1)
+OUTPUT: 1
+```
+
+## CHECKBOX_CHECKED
+
+on $json_input form array, finds all item/object with checked, and returns its text field, concatenated by $delimiter
+
+Usage example:
+
+```
+Name of the function: CHECKBOX_CHECKED
+Number of parameters: 2
+Type of parameters: $json_input, $delimiter
+
+INPUT: CHECKBOX_CHECKED(1, 1)
+OUTPUT: 1
+```
+
+## CONATINS
+
+is $string part of $substr?
+
+TODO: typo?
+
+Usage example:
+
+```
+Name of the function: CONATINS
+Number of parameters: 2
+Type of parameters: $string, $substr
+
+INPUT: CONATINS(1, 1)
+OUTPUT: 1
+```
+
+## HAS_ONE_TRUE
+
+is $json_input cointains a truthy $attribute?
+
+Usage example:
+
+```
+Name of the function: HAS_ONE_TRUE
+Number of parameters: 2
+Type of parameters: $json_input, $attribute
+
+INPUT: HAS_ONE_TRUE(1, 1)
+OUTPUT: 1
+```
+
+## STARTS_WITH
+
+is $string starts with $substr?
+
+Usage example:
+
+```
+Name of the function: STARTS_WITH
+Number of parameters: 2
+Type of parameters: $string, $substr
+
+INPUT: STARTS_WITH(1, 1)
+OUTPUT: 1
+```
+
+## ENDS_WITH
+
+is $string ends with $substr?
+
+Usage example:
+
+```
+Name of the function: ENDS_WITH
+Number of parameters: 2
+Type of parameters: $string, $substr
+
+INPUT: ENDS_WITH(1, 1)
+OUTPUT: 1
+```
+
+## LEFT
+
+first $numChars of $string
+
+Usage example:
+
+```
+Name of the function: LEFT
+Number of parameters: 2
+Type of parameters: $string, $numChars
+
+INPUT: LEFT(1, 1)
+OUTPUT: 1
+```
+
+## RIGHT
+
+last $numChars of $string
+
+Usage example:
+
+```
+Name of the function: RIGHT
+Number of parameters: 2
+Type of parameters: $string, $numChars
+
+INPUT: RIGHT(1, 1)
+OUTPUT: 1
+```
+
+## LEN
+
+$string length
+
+Usage example:
+
+```
+Name of the function: LEN
+Number of parameters: 1
+Type of parameters: $string
+
+INPUT: LEN(1)
+OUTPUT: 1
+```
+
+## SPLIT_INDEX
+
+splits $string by $delim, and takes $index th item
+
+Usage example:
+
+```
+Name of the function: SPLIT_INDEX
+Number of parameters: 3
+Type of parameters: $string, $delim, $index
+
+INPUT: SPLIT_INDEX(1, 1, 1)
+OUTPUT: 1
+```
+
+## REGEXP_MATCH
+
+check if $string matches on $pattern. Uses php regexp
+
+Usage example:
+
+```
+Name of the function: REGEXP_MATCH
+Number of parameters: 2
+Type of parameters: $string, $pattern
+
+INPUT: REGEXP_MATCH(1)
+OUTPUT: 1
+```
+
+## REGEXP_REPLACE
+
+replaces $pattern with $replaceWith on $string. Using php regexp
+
+Usage example:
+
+```
+Name of the function: REGEXP_REPLACE
+Number of parameters: 3
+Type of parameters: $string, $pattern, $replaceWith
+
+INPUT: REGEXP_REPLACE(1)
+OUTPUT: 1
+```
+
+## REGEXP_EXTRACT
+
+finds $pattern in $string. Using php regexp
+
+Usage example:
+
+```
+Name of the function: REGEXP_EXTRACT
+Number of parameters: 2
+Type of parameters: $string, $pattern
+
+INPUT: REGEXP_EXTRACT(1, 1)
+OUTPUT: 1
+```
+
+## REGEXP_EXTRACT_NTH
+
+finds $index th match of $pattern on $string. Using php regexp
+
+Usage example:
+
+```
+Name of the function: REGEXP_EXTRACT_NTH
+Number of parameters: 3
+Type of parameters: $string, $pattern, $index
+
+INPUT: REGEXP_EXTRACT_NTH(1, 1, 1)
+OUTPUT: 1
+```
+
+## DATE_ADD
+
+adds $interval of $datePart to $date. $date should be in Y-m-d H:i:s, $interval is an integer, $datePart is second/minute/hour/day/month/year. Keeps output as Y-m-d H:i:s
+
+Usage example:
+
+```
+Name of the function: DATE_ADD
+Number of parameters: 3
+Type of parameters: $datePart, $interval, $date
+
+INPUT: DATE_ADD(1, 1, 1)
+OUTPUT: 1
+```
+
+## DATE_DIFF
+
+diff between Y-m-d H:i:s formatted $startDate and $endDate, using $datePart as unit (which is one of second/minute/hour/day/month/year)
+
+Usage example:
+
+```
+Name of the function: DATE_DIFF
+Number of parameters: 3
+Type of parameters: $datePart, $startDate, $endDate
+
+INPUT: DATE_DIFF(1, 1, 1)
+OUTPUT: 1
+```
+
+## DATE_COMPARE
+
+check if $p1 $operator $p2 true. $p1,$p2 is Y-m-d H:i:s date, $operator is <;>;<=;>=;!=;=
+
+Usage example:
+
+```
+Name of the function: DATE_COMPARE
+Number of parameters: 3
+Type of parameters: $p1, $operator, $p2
+
+INPUT: DATE_COMPARE(1, 1, 1)
+OUTPUT: 1
+```
+
+## DATE_FORMAT
+
+Reformat $input date for $format, which should be a valid php format string.
+
+Usage example:
+
+```
+Name of the function: DATE_FORMAT
+Number of parameters: 2
+Type of parameters: $input, $format
+
+INPUT: DATE_FORMAT(1, 1)
+OUTPUT: 1
+```
+
+## DATE_DEFAULT
+
+Reformat current date for $format, which should be a valid php format string.
+
+Usage example:
+
+```
+Name of the function: DATE_DEFAULT
+Number of parameters: 1
+Type of parameters: $format
+
+INPUT: DATE_DEFAULT(1)
+OUTPUT: 1
 ```
