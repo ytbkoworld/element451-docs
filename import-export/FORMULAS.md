@@ -272,7 +272,7 @@ OUTPUT: 3
 
 ## RND
 
-RND: RND() function generates a random number (double value) between 0 and 1.
+The random function `RND` generates a random number (double value) between 0 and 1.
 
 Usage example:
 
@@ -281,13 +281,13 @@ Name of the function: RND
 Number of parameters: 0
 Type of parameters: number
 
-INPUT: RND(1)
-OUTPUT: 1
+INPUT: RND()
+OUTPUT: 0.3
 ```
 
 ## VAL
 
-VAL: VAL("3.1") = 3.1 Returns the floating point numeric value of the string argument.
+The value function `VAL` returns the floating point numeric value of the string argument.
 
 Usage example:
 
@@ -296,13 +296,13 @@ Name of the function: VAL
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: VAL(1)
-OUTPUT: 1
+INPUT: VAL("3.1")
+OUTPUT: 3.1
 ```
 
 ## POW
 
-VAL: VAL("3.1") = 3.1 Returns the floating point numeric value of the string argument.
+ThepPower function `POW` raises Base to any power. For fractional exponents or exponents greater than MaxInt, Base must be greater than 0. 
 
 Usage example:
 
@@ -311,13 +311,13 @@ Name of the function: POW
 Number of parameters: 2
 Type of parameters: number, number
 
-INPUT: POW(1, 1)
-OUTPUT: 1
+INPUT: POW(451, 2)
+OUTPUT: 203401
 ```
 
 ## LOGN
 
-LOGN: The LogN function returns the log base N of X. Example: LOGN(10, 100) = 2
+The LogN function `LOGN` returns the log base N of X.
 
 Usage example:
 
@@ -326,43 +326,43 @@ Name of the function: LOGN
 Number of parameters: 2
 Type of parameters: number, number
 
-INPUT: LOGN(1, 1)
-OUTPUT: 1
+INPUT: LOGN(10, 100)
+OUTPUT: 2
 ```
 
 ## MIN
 
-MIN: MIN(2, 3) is 2.
+The minimum function `MIN` gives the smallest value of a set.
 
 Usage example:
 
 ```
 Name of the function: MIN
-Number of parameters: 1
+Number of parameters: 2
 Type of parameters: number
 
-INPUT: MIN(1)
-OUTPUT: 1
+INPUT: MIN(2, 3)
+OUTPUT: 2
 ```
 
 ## MAX
 
-MAX: MAX(2, 3) is 3.
+The maximum function `MAX` gives the largest value of a set.
 
 Usage example:
 
 ```
 Name of the function: MAX
-Number of parameters: 1
+Number of parameters: 2
 Type of parameters: number
 
-INPUT: MAX(1)
-OUTPUT: 1
+INPUT: MAX(2, 3)
+OUTPUT: 3
 ```
 
 ## MOD
 
-modulo
+The mod function `MOD` gives the remainder on division of M by N.
 
 Usage example:
 
@@ -371,13 +371,13 @@ Name of the function: MOD
 Number of parameters: 2
 Type of parameters: number, number
 
-INPUT: MOD(1, 1)
+INPUT: MOD(451, 2)
 OUTPUT: 1
 ```
 
 ## IF
 
-IF: The IF(b, case1, case2) function provides branching capability. If b is not 0, then it returns case1, else it returns case2. Behavior is similar to PHP's: <b>return b ? case1 : case2; If b==0 then case1 will not be Evaluated, and vice versa. Example: IF(HEIGHT, 3/HEIGHT, 3) will make sure 3/HEIGHT does not cause division by zero.
+The `IF(b, case1, case2)` function provides branching capability. If `B` is not `0`, then it returns `case1`, else it returns `case2`. Behavior is similar to PHP's: `return b ? case1 : case2;`. If `b==0` then `case1` will not be Evaluated, and vice versa.
 
 Usage example:
 
@@ -386,13 +386,13 @@ Name of the function: IF
 Number of parameters: 3
 Type of parameters: bool, any, any
 
-INPUT: IF(1, 1, 1)
-OUTPUT: 1
+INPUT: IF(HEIGHT, 3/HEIGHT, 3)
+DESCRIPTION: Will make sure 3/HEIGHT does not cause division by zero
 ```
 
 ## STRLEN
 
-STRLEN: STRLEN("abc") function returns the length of the string parameter. For example, for "abc" it returns 3.
+The string lenght function returns the length of the string parameter.
 
 Usage example:
 
@@ -401,13 +401,13 @@ Name of the function: STRLEN
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: STRLEN(1)
-OUTPUT: 1
+INPUT: STRLEN("ABC")
+OUTPUT: 3
 ```
 
 ## STR
 
-STR: STR(123) function returns the string representation of the passed value: "123".
+The string function return the string representation of the passed value.
 
 Usage example:
 
@@ -416,13 +416,31 @@ Name of the function: STR
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: STR(1)
-OUTPUT: 1
+INPUT: STR(451)
+OUTPUT: "451"
 ```
 
 ## SUBSTR
 
-SUBSTR: SUBSTR("Hello", 1,3) function returns the substring just like PHP substr function. The first parameter is the string, the second parameter is which index (0 based) to start copying, and the last parameter is the number of characters to copy. For example, SUBSTR("Hello", 1,3) returns "ell".
+The substring function return part of a string. The first parameter is the input string. Must be one character or longer. The second parameter is the start point. And the third parameter represent the lenght.
+
+### 2nd param - start
+
+If `start` is non-negative, the returned string will start at the `start`'th position in `string`, counting from zero. For instance, in the string `'abcdef'`, the character at position `0` is `'a'`, the character at position `2` is `'c'`, and so forth.
+
+If `start` is negative, the returned string will start at the `start`'th character from the end of `string`.
+
+If `string` is less than `start` characters long, `FALSE` will be returned.
+
+### 3rd param - lenght
+
+If `length` is given and is positive, the string returned will contain at most `length` characters beginning from `start` (depending on the length of `string`).
+
+If `length` is given and is negative, then that many characters will be omitted from the end of `string` (after the start position has been calculated when a `start` is negative). If `start` denotes the position of this truncation or beyond, `FALSE` will be returned.
+
+If `length` is given and is `0`, `FALSE` or `NULL`, an empty string will be returned.
+
+If `length` is omitted, the substring starting from `start` until the end of the string will be returned.
 
 Usage example:
 
@@ -431,28 +449,37 @@ Name of the function: SUBSTR
 Number of parameters: 3
 Type of parameters: string, number, number
 
-INPUT: SUBSTR(1, 1, 1)
-OUTPUT: 1
+INPUT: SUBSTR("abcdef", 0, -1)
+OUTPUT: "abcde"
+
+INPUT: SUBSTR("abcdef", 2, -1)
+OUTPUT: "cde"
+
+INPUT: SUBSTR(abcdef", 4, -4)
+OUTPUT: false
+
+INPUT: SUBSTR("abcdef", -3, -1)
+OUTPUT: "de"
 ```
 
 ## CONCAT
 
-CONCAT: CONCAT("abc","def",...) function returns the concatanated strings: "abcdef". There is no preset limit on the number of parameters.
+The concatenation function `CONCAT` returns the concatanated strings. There is no preset limit on the number of parameters.
 
 Usage example:
 
 ```
 Name of the function: CONCAT
-Number of parameters: 1
+Number of parameters: unlimited
 Type of parameters: number
 
-INPUT: CONCAT(1)
-OUTPUT: 1
+INPUT: CONCAT("ABC", "DEF")
+OUTPUT: "ABCDEF"
 ```
 
 ## TRIM
 
-TRIM: TRIM(" abc  ") function returns the trimmed version of the string parameter: " abc  " -> "abc".
+The trim function `TRIM` returns the trimmed version of the given string.
 
 Usage example:
 
@@ -461,13 +488,13 @@ Name of the function: TRIM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: TRIM(1)
-OUTPUT: 1
+INPUT: TRIM(" abc  ")
+OUTPUT: "abc"
 ```
 
 ## RTRIM
 
-trim from right
+The `RTRIM` remove whitespaces from the ends of the string.
 
 Usage example:
 
@@ -476,13 +503,16 @@ Name of the function: RTRIM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: RTRIM(1)
-OUTPUT: 1
+INPUT: RTRIM("abc  ")
+OUTPUT: "abc"
+
+INPUT: RTRIM("  abc ")
+OUTPUT: "  abc"
 ```
 
 ## LTRIM
 
-trim from left
+The `LTRIM` remove whitespaces from the starts of the string.
 
 Usage example:
 
@@ -491,13 +521,17 @@ Name of the function: LTRIM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: LTRIM(1)
-OUTPUT: 1
+INPUT: LTRIM("  abc")
+OUTPUT: "abc"
+
+INPUT: LTRIM(" abc  ")
+OUTPUT: "abc   "
+
 ```
 
 ## CHR
 
-gets a character with the given ascii code
+The `CHR` functions gets a character with the given ascii code.
 
 Usage example:
 
@@ -506,13 +540,15 @@ Name of the function: CHR
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: CHR(1)
-OUTPUT: 1
+INPUT: CHR(65)
+OUTPUT: "A"
 ```
 
 ## NUM
 
+TODO: needs clarifications
 tries to convert an expression to a number
+
 
 Usage example:
 
@@ -675,20 +711,18 @@ INPUT: CHECKBOX_CHECKED(1, 1)
 OUTPUT: 1
 ```
 
-## CONATINS
+## CONTAINS
 
 is $string part of $substr?
-
-TODO: typo?
 
 Usage example:
 
 ```
-Name of the function: CONATINS
+Name of the function: CONTAINS
 Number of parameters: 2
 Type of parameters: $string, $substr
 
-INPUT: CONATINS(1, 1)
+INPUT: CONTAINS(1, 1)
 OUTPUT: 1
 ```
 
