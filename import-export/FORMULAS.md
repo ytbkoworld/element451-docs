@@ -964,9 +964,8 @@ Name of the function: DATE_FORMAT
 Number of parameters: 2
 Type of parameters: $input, $format
 
-INPUT: DATE_FORMAT(1, 1)
-OUTPUT: 1
-TODO: Vass should add an example
+INPUT: DATE_FORMAT('2016-10-04 12:45:23', 'D M d H:i:s O Y')
+OUTPUT: Tue Oct 04 12:45:23 -0400 2016
 ```
 
 ## DATE_DEFAULT
@@ -980,7 +979,6 @@ Name of the function: DATE_DEFAULT
 Number of parameters: 1
 Type of parameters: $format
 
-INPUT: DATE_DEFAULT(1)
-OUTPUT: 1
-TODO: Vass should add an example
+INPUT: DATE_DEFAULT('D M d H:i:s O Y')
+OUTPUT: Fri Nov 17 09:29:26 -0500 2017
 ```
