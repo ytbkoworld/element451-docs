@@ -1,7 +1,5 @@
 # Formulas for Import/Export
 
-Dev note: in progress...
-
 ## SQR
 
 A square root of `X` is a number `R` such that `R^2=X`.
@@ -155,7 +153,7 @@ OUTPUT: 6.11
 
 ## LOG
 
-Gives the natural logarithm of X (logarithm to base 10).
+Gives the natural logarithm of `X` (logarithm to `base 10`).
 
 Usage example:
 
@@ -302,7 +300,7 @@ OUTPUT: 3.1
 
 ## POW
 
-ThepPower function `POW` raises Base to any power. For fractional exponents or exponents greater than MaxInt, Base must be greater than 0. 
+ThepPower function `POW` raises Base to any power. For fractional exponents or exponents greater than MaxInt, Base must be greater than 0.
 
 Usage example:
 
@@ -456,7 +454,7 @@ INPUT: SUBSTR("abcdef", 2, -1)
 OUTPUT: "cde"
 
 INPUT: SUBSTR(abcdef", 4, -4)
-OUTPUT: false
+OUTPUT: FALSE
 
 INPUT: SUBSTR("abcdef", -3, -1)
 OUTPUT: "de"
@@ -531,7 +529,7 @@ OUTPUT: "abc   "
 
 ## CHR
 
-The `CHR` functions gets a character with the given ascii code.
+The `CHR` functions gets a character with the given `ASCII` code.
 
 Usage example:
 
@@ -546,9 +544,7 @@ OUTPUT: "A"
 
 ## NUM
 
-TODO: needs clarifications
-tries to convert an expression to a number
-
+To number function tries to convert an expression to a `number`.
 
 Usage example:
 
@@ -557,13 +553,13 @@ Name of the function: NUM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: NUM(1)
-OUTPUT: 1
+INPUT: NUM('$100.00')
+OUTPUT: 100.00
 ```
 
 ## SUM
 
-SUM: SUM(2,3,5,...) functions returns the sum of it's arguments. There is no preset limit on the number of parameters.
+A sum is the result of an `addition`. There is no preset limit on the number of parameters.
 
 Usage example:
 
@@ -572,13 +568,13 @@ Name of the function: SUM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: SUM(1)
-OUTPUT: 1
+INPUT: SUM(1, 2, 3, 4)
+OUTPUT: 10
 ```
 
 ## UPPER
 
-UPPERCASE STRING
+The uppercase function `UPPER` will capitalize all letters of string.
 
 Usage example:
 
@@ -587,13 +583,13 @@ Name of the function: UPPER
 Number of parameters: 1
 Type of parameters: $string
 
-INPUT: UPPER(1)
-OUTPUT: 1
+INPUT: UPPER("hello world")
+OUTPUT: "HELLO WORLD"
 ```
 
 ## LOWER
 
-lowercase string
+The lowercase function `LOWER` will lowercase all letters of string.
 
 Usage example:
 
@@ -602,13 +598,13 @@ Name of the function: LOWER
 Number of parameters: 1
 Type of parameters: $string
 
-INPUT: LOWER(1)
-OUTPUT: 1
+INPUT: LOWER("HELLO WORLD")
+OUTPUT: "hello world"
 ```
 
 ## TITLECASE
 
-Title Case String
+The titlecase function `TITLECASE` will capitalize first letter of each word.
 
 Usage example:
 
@@ -617,13 +613,13 @@ Name of the function: TITLECASE
 Number of parameters: 1
 Type of parameters: $string
 
-INPUT: TITLECASE(1)
-OUTPUT: 1
+INPUT: TITLECASE("heLlO woRLd")
+OUTPUT: "Hello World"
 ```
 
 ## MATCH
 
-check if strings are the same
+The match function `MATCH` check if strings are equal. If `$caseSensitive` is `TRUE`, then do not ignore case.
 
 Usage example:
 
@@ -632,13 +628,22 @@ Name of the function: MATCH
 Number of parameters: 2
 Type of parameters: $p1, $p2, $caseSensitve = 1
 
-INPUT: MATCH(1, 1)
-OUTPUT: 1
+INPUT: MATCH("Hello", "hello", FALSE)
+OUTPUT: TRUE
+
+INPUT: MATCH("Hello", "hello", TRUE)
+OUTPUT: FALSE
+
+INPUT: MATCH ("Hello", "Hello", TRUE)
+OUTPUT: TRUE
 ```
 
 ## PAD
 
-pads a given string to given length by given char
+The pad function `PAD` will pads a given string to given length by given char.
+
+* If `length` is `< 0`, pad the `string` from the right instead.
+* If `length` is `< length of string`, return `string`.
 
 Usage example:
 
@@ -647,13 +652,19 @@ Name of the function: PAD
 Number of parameters: 3
 Type of parameters: string, char, length
 
-INPUT: PAD(1)
-OUTPUT: 1
+INPUT: PAD("137", '0', 5)
+OUTPUT: "00137"
+
+INPUT: PAD("137", '2', -6)
+OUTPUT: "137222"
+
+INPUT: PAD("137", '0', 2)
+OUTPUT: "137"
 ```
 
 ## DS_MAP
 
-luminous datasource mapping
+Luminous Data Source mapping. The `$output` value is the value of the output key for the setting matched by match in the `$dataSource`. If no settings are matched with `$match`, default is returned.
 
 Usage example:
 
@@ -662,13 +673,16 @@ Name of the function: DS_MAP
 Number of parameters: 5
 Type of parameters: $input, $dataSource, $match, $output, $default
 
-INPUT: DS_MAP(1, 1, 1, 1, 1)
-OUTPUT: 1
+INPUT: DS_MAP("cnr.terms.1", "data_source.terms", "guid", "name", "TermNotFound")
+OUTPUT: "Fall 2016"
+
+INPUT: DS_MAP("cnr.terms.1350", "data_source.terms", "guid", "name", "TermNotFound")
+OUTPUT: "TermNotFound"
 ```
 
 ## CEEB_MAP
 
-luminous ceeb mapping
+Same as `DS_MAP`, but the Data Source is the `luminous_ceebs` collection.
 
 Usage example:
 
@@ -677,13 +691,13 @@ Name of the function: CEEB_MAP
 Number of parameters: 4
 Type of parameters: $input, $match, $output, $default
 
-INPUT: CEEB_MAP(1, 1, 1, 1)
-OUTPUT: 1
+INPUT: CEEB_MAP(181615,\"ceeb\",\"name\", "CeebNotFound")
+OUTPUT: "Academy At Shawnee"
 ```
 
 ## CHECKBOX_FIRST
 
-on $json_input form array, finds first item/object with checked, and returns its text field, or an empty string, if not exists.
+Returns the "text" field of the first checkbox that has "checked"=TRUE.
 
 Usage example:
 
@@ -692,13 +706,13 @@ Name of the function: CHECKBOX_FIRST
 Number of parameters: 1
 Type of parameters: $json_input
 
-INPUT: CHECKBOX_FIRST(1)
-OUTPUT: 1
+INPUT: CHECKBOX_FIRST([user-race-categories])
+OUTPUT: "Asian"
 ```
 
 ## CHECKBOX_CHECKED
 
-on $json_input form array, finds all item/object with checked, and returns its text field, concatenated by $delimiter
+Used mostly internally, for exporting checked values of a checkbox field. checkboxes will most likely be a slug. The internal object is expected to have fields "checked" and "text". If "checked" is TRUE, then "text" will be output.
 
 Usage example:
 
@@ -707,13 +721,13 @@ Name of the function: CHECKBOX_CHECKED
 Number of parameters: 2
 Type of parameters: $json_input, $delimiter
 
-INPUT: CHECKBOX_CHECKED(1, 1)
-OUTPUT: 1
+INPUT: CHECKBOX_CHECKED([user-race-categories], ",")
+OUTPUT: "Asian,White
 ```
 
 ## CONTAINS
 
-is $string part of $substr?
+Check if string contains substring.
 
 Usage example:
 
@@ -722,13 +736,16 @@ Name of the function: CONTAINS
 Number of parameters: 2
 Type of parameters: $string, $substr
 
-INPUT: CONTAINS(1, 1)
-OUTPUT: 1
+INPUT: CONTAINS("Hello World", "Hello")
+OUTPUT: TRUE
+
+INPUT: CONTAINS("Hello World", "random string")
+OUTPUT: FALSE
 ```
 
 ## HAS_ONE_TRUE
 
-is $json_input cointains a truthy $attribute?
+Returns TRUE if an option in options has `$attribute = TRUE`. Otherwise, returns `FALSE`.
 
 Usage example:
 
@@ -737,13 +754,13 @@ Name of the function: HAS_ONE_TRUE
 Number of parameters: 2
 Type of parameters: $json_input, $attribute
 
-INPUT: HAS_ONE_TRUE(1, 1)
-OUTPUT: 1
+INPUT: HAS_ONE_TRUE([user-education-schools], "associated_degree")
+OUTPUT: TRUE
 ```
 
 ## STARTS_WITH
 
-is $string starts with $substr?
+Check if `$string` starts with `$substr`.
 
 Usage example:
 
@@ -752,13 +769,13 @@ Name of the function: STARTS_WITH
 Number of parameters: 2
 Type of parameters: $string, $substr
 
-INPUT: STARTS_WITH(1, 1)
-OUTPUT: 1
+INPUT: STARTS_WITH("Hello World", "Hello")
+OUTPUT: TRUE
 ```
 
 ## ENDS_WITH
 
-is $string ends with $substr?
+Check if string ends with substring.
 
 Usage example:
 
@@ -767,13 +784,13 @@ Name of the function: ENDS_WITH
 Number of parameters: 2
 Type of parameters: $string, $substr
 
-INPUT: ENDS_WITH(1, 1)
-OUTPUT: 1
+INPUT: ENDS_WITH("Hello World", "World")
+OUTPUT: TRUE
 ```
 
 ## LEFT
 
-first $numChars of $string
+Get the first `$numChars` characters of `$string`.
 
 Usage example:
 
@@ -782,13 +799,13 @@ Name of the function: LEFT
 Number of parameters: 2
 Type of parameters: $string, $numChars
 
-INPUT: LEFT(1, 1)
-OUTPUT: 1
+INPUT: LEFT("Hello World", 5)
+OUTPUT: "Hello"
 ```
 
 ## RIGHT
 
-last $numChars of $string
+Get the last `numChars` characters of `$string`.
 
 Usage example:
 
@@ -797,13 +814,13 @@ Name of the function: RIGHT
 Number of parameters: 2
 Type of parameters: $string, $numChars
 
-INPUT: RIGHT(1, 1)
-OUTPUT: 1
+INPUT: RIGHT("Hello World", 5)
+OUTPUT: "World"
 ```
 
 ## LEN
 
-$string length
+Get the number of characters in `$string`.
 
 Usage example:
 
@@ -812,13 +829,13 @@ Name of the function: LEN
 Number of parameters: 1
 Type of parameters: $string
 
-INPUT: LEN(1)
-OUTPUT: 1
+INPUT: LEN("Hello World")
+OUTPUT: 11
 ```
 
 ## SPLIT_INDEX
 
-splits $string by $delim, and takes $index th item
+Split `$string` by delimiter and get the index substring.
 
 Usage example:
 
@@ -827,13 +844,13 @@ Name of the function: SPLIT_INDEX
 Number of parameters: 3
 Type of parameters: $string, $delim, $index
 
-INPUT: SPLIT_INDEX(1, 1, 1)
-OUTPUT: 1
+INPUT: SPLIT_INDEX("Hello World", " ", 2)
+OUTPUT: "World"
 ```
 
 ## REGEXP_MATCH
 
-check if $string matches on $pattern. Uses php regexp
+Match `$string` with `$pattern`. Uses PHP `RegExp`.
 
 Usage example:
 
@@ -842,13 +859,13 @@ Name of the function: REGEXP_MATCH
 Number of parameters: 2
 Type of parameters: $string, $pattern
 
-INPUT: REGEXP_MATCH(1)
-OUTPUT: 1
+INPUT: REGEXP_MATCH("Hello World", "H[a-z]{4}\s.*")
+OUTPUT: TRUE
 ```
 
 ## REGEXP_REPLACE
 
-replaces $pattern with $replaceWith on $string. Using php regexp
+Replace `$pattern` in `$string` with `$replaceWith`. Uses PHP `RegExp`.
 
 Usage example:
 
@@ -857,13 +874,13 @@ Name of the function: REGEXP_REPLACE
 Number of parameters: 3
 Type of parameters: $string, $pattern, $replaceWith
 
-INPUT: REGEXP_REPLACE(1)
-OUTPUT: 1
+INPUT: REGEXP_REPLACE("Hello World", "[a-z]", "x")
+OUTPUT: "Hxxxx Wxxxx"
 ```
 
 ## REGEXP_EXTRACT
 
-finds $pattern in $string. Using php regexp
+Get substring within `$string` that matches the first parenthetical expression of `$pattern`. Uses PHP `RegExp`.
 
 Usage example:
 
@@ -872,13 +889,13 @@ Name of the function: REGEXP_EXTRACT
 Number of parameters: 2
 Type of parameters: $string, $pattern
 
-INPUT: REGEXP_EXTRACT(1, 1)
-OUTPUT: 1
+INPUT: REGEXP_EXTRACT("Hello World", "Hello\s(.*)")
+OUTPUT: "World"
 ```
 
 ## REGEXP_EXTRACT_NTH
 
-finds $index th match of $pattern on $string. Using php regexp
+Get substring within `$string` that matches the index parenthetical expression of `$pattern`. Uses PHP `RegExp`.
 
 Usage example:
 
@@ -887,13 +904,13 @@ Name of the function: REGEXP_EXTRACT_NTH
 Number of parameters: 3
 Type of parameters: $string, $pattern, $index
 
-INPUT: REGEXP_EXTRACT_NTH(1, 1, 1)
-OUTPUT: 1
+INPUT: REGEXP_EXTRACT_NTH("Hello World", "H([a-z]+)\s(.*)", 1)
+OUTPUT: "ello"
 ```
 
 ## DATE_ADD
 
-adds $interval of $datePart to $date. $date should be in Y-m-d H:i:s, $interval is an integer, $datePart is second/minute/hour/day/month/year. Keeps output as Y-m-d H:i:s
+Add interval `$datePart` to `$date`. `$date` should be in `Y-m-d H:i:s` format, `$interval` is an `integer`, `$datePart` is `second/minute/hour/day/month/year`. Keeps output as `Y-m-d H:i:s`.
 
 Usage example:
 
@@ -902,13 +919,13 @@ Name of the function: DATE_ADD
 Number of parameters: 3
 Type of parameters: $datePart, $interval, $date
 
-INPUT: DATE_ADD(1, 1, 1)
-OUTPUT: 1
+INPUT: DATE_ADD("month", 5, "2016-10-04 12:45:23")
+OUTPUT: "2017-03-04 12:45:23"
 ```
 
 ## DATE_DIFF
 
-diff between Y-m-d H:i:s formatted $startDate and $endDate, using $datePart as unit (which is one of second/minute/hour/day/month/year)
+Get the difference between `$endDate` and `$startDate` in `$datePart`. Using $datePart as unit (which is one of `second/minute/hour/day/month/year`).
 
 Usage example:
 
@@ -917,13 +934,13 @@ Name of the function: DATE_DIFF
 Number of parameters: 3
 Type of parameters: $datePart, $startDate, $endDate
 
-INPUT: DATE_DIFF(1, 1, 1)
-OUTPUT: 1
+INPUT: DATE_DIFF("month", "2016-10-04 12:45:23", "2017-03-04 12:45:23")
+OUTPUT: 5
 ```
 
 ## DATE_COMPARE
 
-check if $p1 $operator $p2 true. $p1,$p2 is Y-m-d H:i:s date, $operator is <;>;<=;>=;!=;=
+Check if `$p1 $operator $p2` is `TRUE`. `$p1`, `$p2` is `Y-m-d H:i:s` date, `$operator` is `<;>;<=;>=;!=;=`.
 
 Usage example:
 
@@ -932,13 +949,13 @@ Name of the function: DATE_COMPARE
 Number of parameters: 3
 Type of parameters: $p1, $operator, $p2
 
-INPUT: DATE_COMPARE(1, 1, 1)
-OUTPUT: 1
+INPUT: DATE_COMPARE("2016-10-04 12:45:23", "=", "2016-10-04 12:45:23")
+OUTPUT: TRUE
 ```
 
 ## DATE_FORMAT
 
-Reformat $input date for $format, which should be a valid php format string.
+Reformat `$input` date for `$format`, which should be a valid PHP `$format` string.
 
 Usage example:
 
@@ -949,11 +966,12 @@ Type of parameters: $input, $format
 
 INPUT: DATE_FORMAT(1, 1)
 OUTPUT: 1
+TODO: Vass should add an example
 ```
 
 ## DATE_DEFAULT
 
-Reformat current date for $format, which should be a valid php format string.
+Reformat current date for $format to the default format.
 
 Usage example:
 
@@ -964,4 +982,5 @@ Type of parameters: $format
 
 INPUT: DATE_DEFAULT(1)
 OUTPUT: 1
+TODO: Vass should add an example
 ```
