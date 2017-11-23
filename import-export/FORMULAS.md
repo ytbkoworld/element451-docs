@@ -27,7 +27,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: SIN(1)
-OUTPUT: 0.84
+OUTPUT: 0.84{...}
 ```
 
 ## COS
@@ -42,7 +42,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: COS(1)
-OUTPUT: 0.54
+OUTPUT: 0.54{...}
 ```
 
 
@@ -58,7 +58,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: ATAN(1)
-OUTPUT: 0.79
+OUTPUT: 0.79{...}
 ```
 
 ## SINH
@@ -73,7 +73,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: SINH(1)
-OUTPUT: 1.18
+OUTPUT: 1.18{...}
 ```
 
 ## COSH
@@ -88,7 +88,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: COSH(1)
-OUTPUT: 1.54
+OUTPUT: 1.54{...}
 ```
 
 ## COTAN
@@ -103,7 +103,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: COTAN(1)
-OUTPUT: 0.65
+OUTPUT: 0.64{...}
 ```
 
 ## TAN
@@ -118,7 +118,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: TAN(1)
-OUTPUT: 1.56
+OUTPUT: 1.56{...}
 ```
 
 ## EXP
@@ -133,7 +133,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: EXP(1)
-OUTPUT: 2.7183
+OUTPUT: 2.72{...}
 ```
 
 ## LN
@@ -148,7 +148,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: LN(451)
-OUTPUT: 6.11
+OUTPUT: 6.11{...}
 ```
 
 ## LOG
@@ -163,7 +163,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: LOG(451)
-OUTPUT: 2.65
+OUTPUT: 2.65{...}
 ```
 
 ## SQRT
@@ -244,7 +244,7 @@ Number of parameters: 1
 Type of parameters: number
 
 INPUT: CEIL(-3.2)
-OUTPUT: 3
+OUTPUT: -3
 
 INPUT: CEIL(3.2)
 OUTPUT: 4
@@ -280,7 +280,7 @@ Number of parameters: 0
 Type of parameters: number
 
 INPUT: RND()
-OUTPUT: 0.3
+OUTPUT: 0.3{...}
 ```
 
 ## VAL
@@ -453,7 +453,7 @@ OUTPUT: "abcde"
 INPUT: SUBSTR("abcdef", 2, -1)
 OUTPUT: "cde"
 
-INPUT: SUBSTR(abcdef", 4, -4)
+INPUT: SUBSTR("abcdef", 4, -4)
 OUTPUT: FALSE
 
 INPUT: SUBSTR("abcdef", -3, -1)
@@ -523,7 +523,7 @@ INPUT: LTRIM("  abc")
 OUTPUT: "abc"
 
 INPUT: LTRIM(" abc  ")
-OUTPUT: "abc   "
+OUTPUT: "abc  "
 
 ```
 
@@ -553,7 +553,7 @@ Name of the function: NUM
 Number of parameters: 1
 Type of parameters: number
 
-INPUT: NUM('$100.00')
+INPUT: NUM("$100.00")
 OUTPUT: 100.00
 ```
 
@@ -665,6 +665,7 @@ OUTPUT: "137"
 ## DS_MAP
 
 Luminous Data Source mapping. The `output` value is the value of the output key for the setting matched by match in the `dataSource`. If no settings are matched with `match`, default is returned.
+Checks the luminous_data_sources collection for item `dataSource`, check its options, finds an item which `match` field is `input`, and returns it's `name` field.
 
 Usage example:
 
@@ -706,10 +707,10 @@ Name of the function: CHECKBOX_FIRST
 Number of parameters: 1
 Type of parameters: json_input
 
-INPUT: CHECKBOX_FIRST("[{checked:true,text:'Asian'},{checked:false,text:'European'},{checked:true,text:'American'}]")
+INPUT: CHECKBOX_FIRST("[{'checked':true,'text':'Asian'},{'checked':false,'text':'European'},{'checked':true,'text':'American'}]")
 OUTPUT: "Asian"
 
-INPUT: CHECKBOX_FIRST("[{checked:false,text:'Asian'},{checked:false,text:'European'},{checked:false,text:'American'}]")
+INPUT: CHECKBOX_FIRST("[{'checked':false,'text':'Asian'},{'checked':false,'text':'European'},{'checked':false,'text':'American'}]")
 OUTPUT: ""
 ```
 
@@ -724,10 +725,10 @@ Name of the function: CHECKBOX_CHECKED
 Number of parameters: 2
 Type of parameters: json_input, delimiter
 
-INPUT: CHECKBOX_CHECKED("[{checked:true,text:'Asian'},{checked:false,text:'European'},{checked:true,text:'American'}]", ",")
+INPUT: CHECKBOX_CHECKED("[{'checked':true,'text':'Asian'},{'checked':false,'text':'European'},{'checked':true,'text':'American'}]", ",")
 OUTPUT: "Asian,American"
 
-INPUT: CHECKBOX_CHECKED("[{checked:false,text:'Asian'},{checked:false,text:'European'},{checked:false,text:'American'}]", ",")
+INPUT: CHECKBOX_CHECKED("[{'checked':false,'text':'Asian'},{'checked':false,'text':'European'},{'checked':false,'text':'American'}]", ",")
 OUTPUT: ""
 ```
 
@@ -760,7 +761,7 @@ Name of the function: HAS_ONE_TRUE
 Number of parameters: 2
 Type of parameters: json_input, attribute
 
-INPUT: HAS_ONE_TRUE("[{associated_degree:false},{associated_degree:true,text:'European'}]", "associated_degree")
+INPUT: HAS_ONE_TRUE("[{'associated_degree':false},{'associated_degree':true,'text':'European'}]", "associated_degree")
 OUTPUT: TRUE
 ```
 
@@ -970,8 +971,8 @@ Name of the function: DATE_FORMAT
 Number of parameters: 2
 Type of parameters: input, format
 
-INPUT: DATE_FORMAT('2016-10-04 12:45:23', 'D M d H:i:s O Y')
-OUTPUT: Tue Oct 04 12:45:23 -0400 2016
+INPUT: DATE_FORMAT("2016-10-04 12:45:23", "D M d H:i:s O Y")
+OUTPUT: Tue Oct 04 12:45:23 +0000 2016
 ```
 
 ## DATE_DEFAULT
@@ -985,6 +986,6 @@ Name of the function: DATE_DEFAULT
 Number of parameters: 1
 Type of parameters: format
 
-INPUT: DATE_DEFAULT('D M d H:i:s O Y')
+INPUT: DATE_DEFAULT("D M d H:i:s O Y")
 OUTPUT: Fri Nov 17 09:29:26 -0500 2017
 ```
