@@ -989,3 +989,18 @@ Type of parameters: format
 INPUT: DATE_DEFAULT("D M d H:i:s O Y")
 OUTPUT: Fri Nov 17 09:29:26 -0500 2017
 ```
+
+## DATE_READ
+
+Reads an arbitrary formatted date, and converts it to the default format
+
+Usage example:
+
+```
+Name of the function: DATE_READ
+Number of parameters: 2
+Type of parameters: datestring, format
+
+INPUT: DATE_READ("01/02/03","d/m/y")
+OUTPUT: 2003-02-01 00:00:00
+```
