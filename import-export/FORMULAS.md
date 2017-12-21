@@ -679,6 +679,9 @@ OUTPUT: "Fall 2016"
 
 INPUT: DS_MAP("cnr.terms.1350", "data_source.terms", "guid", "name", "TermNotFound")
 OUTPUT: "TermNotFound"
+
+INPUT: DS_MAP("USA", "data_source.country", "alpha3", "name", "CountryNotFound")
+OUTPUT: "United States"
 ```
 
 ## CEEB_MAP
