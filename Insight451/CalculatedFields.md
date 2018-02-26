@@ -1,5 +1,5 @@
 # Insight451 Calculated Fields Repo
-
+The folloiwng variables use a "left-join" from element_user + element_applications.  Then, we can compute:  
 
 * [Funnel Stage](#funnel-stage)
 * [ActiveTerm](#active-term)
