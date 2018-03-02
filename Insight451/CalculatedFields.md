@@ -62,8 +62,8 @@ ELSE "NA"
 END
 ```
 
-# YoY5
-TBD
+# YoY%
+Return % change from year-to-year
 ```
 sum([Is In Current Year])/sum([Is In Prior Year])-1
 
