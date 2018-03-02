@@ -3,7 +3,7 @@ The following variables use a "left-join" from element_user + element_applicatio
 
 * [Funnel Stage](#funnel-stage)
 * [ActiveTerm](#active-term)
-* [Other](#other)
+* [Year to Year %](#yoy%)
 
 
 # Funnel Stage 
@@ -62,9 +62,27 @@ ELSE "NA"
 END
 ```
 
-# Other
+# YoY5
 TBD
 ```
-Code here
+sum([Is In Current Year])/sum([Is In Prior Year])-1
 
+```
+[Is In Current Year]
+```
+IF [Submitted At] > [Sem start date (mm/dd)] AND  [Submitted At] <= [YoY (mm/dd) (copy)] AND [Term Name] == [Current Year Term ]
+THEN 1
+Else 0
+END
+```
+
+
+[Is In Prior Year]
+```
+IF [Submitted At] > DATEADD('year',-1,[Sem start date (mm/dd)]) AND  
+[Submitted At] <= DATEADD('year',-1,[YoY (mm/dd) (copy)])
+AND [Term Name] == [Prior Year Term]
+THEN 1
+Else 0
+END
 ```
