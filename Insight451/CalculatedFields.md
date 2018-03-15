@@ -54,12 +54,7 @@ END
 # Active Term
 Assigns a term
 ```
-IF [Funnel] == "1-Suspect" OR  [Funnel] == "2-Prospect"
-THEN [Intended Term Name]
-ELSEIF  [Funnel] == "3-Applicants"
-THEN [Term Name]
-ELSE "NA"
-END
+IFNULL([Term Name],[Intended Term Name])
 ```
 
 # YoY%
