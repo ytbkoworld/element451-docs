@@ -3,8 +3,8 @@ The following variables use a "left-join" from element_user + element_applicatio
 
 * [Funnel Stage](#funnel-stage)
 * [ActiveTerm](#active-term)
-* [Year to Year %](#yoy%)
-* [Engagement Score%](#engagement-score%)
+* [Year to Year %](#yoy)
+* [Engagement Score%](#engagement-score)
 
 
 # Funnel Stage 
