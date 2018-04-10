@@ -4,6 +4,7 @@ The following variables use a "left-join" from element_user + element_applicatio
 * [Funnel Stage](#funnel-stage)
 * [ActiveTerm](#active-term)
 * [Year to Year %](#yoy%)
+* [Engagement Score%](#engagement-score%)
 
 
 # Funnel Stage 
@@ -71,7 +72,6 @@ Else 0
 END
 ```
 
-
 [Is In Prior Year]
 ```
 IF [Submitted At] > DATEADD('year',-1,[Sem start date (mm/dd)]) AND  
@@ -80,4 +80,36 @@ AND [Term Name] == [Prior Year Term]
 THEN 1
 Else 0
 END
+```
+
+# Engagement Score
+Computes digital engagement score from email, SMS, forms, and logins
+```
+
+#Trait Computation = "engagementScore"
+engagementScore = emailScore+smsScore+formsSaved+userLogin
+
+emailScore = #emailClicked/#emailDelivered
+smsScore = #smsClicked/#smsDelivered
+
+formsSaved = 	if (#formSaved/#total_forms ==0) then 0
+				if (#formSaved/#total_forms <1) then 0.10
+				if (#formSaved/#total_forms >=1) then 0.25
+				
+
+userLogin= 	if (#dayssincelastlogin<=10) then 0.25
+			if (#dayssincelastlogin>=30) then 0.10
+			if (#dayssincelastlogin>30) then 0.05
+			
+
+#Validation/Truncation
+if emailScore >.25 then emailScore == 0.25
+if smsScore >.25 then smsScore == 0.25
+if emailUnsubscribed == TRUE then emailScore == 0
+
+#Labeling
+If engagementScore ==0 then "DORMANT"
+If engagementScore <0.33 then "LURKER"
+If engagementScore >=0.33 then "FAN"
+
 ```
