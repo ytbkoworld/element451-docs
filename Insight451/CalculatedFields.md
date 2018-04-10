@@ -92,9 +92,9 @@ engagementScore = emailScore+smsScore+formsSaved+userLogin
 emailScore = #emailClicked/#emailDelivered
 smsScore = #smsClicked/#smsDelivered
 
-formsSaved = 	if (#formSaved/#total_forms ==0) then 0
-				if (#formSaved/#total_forms <1) then 0.10
-				if (#formSaved/#total_forms >=1) then 0.25
+formsSaved = 	if (#total_forms/#formSaved ==0) then 0
+				if (#total_forms/#formSaved <1) then 0.10
+				if (#total_forms/#formSaved >=1) then 0.25
 				
 
 userLogin= 	if (#dayssincelastlogin<=10) then 0.25
