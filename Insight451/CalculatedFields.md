@@ -93,7 +93,9 @@ emailScore = #emailClicked/#emailDelivered
 smsScore = #smsClicked/#smsDelivered
 
 formsSaved = 	if (#total_forms/#formSaved ==0) then 0
-				if (#total_forms/#formSaved <1) then 0.10
+				if (#total_forms/#formSaved <.25) then 0.0625
+				if (#total_forms/#formSaved <.5) then 0.125
+				if (#total_forms/#formSaved <.75) then 0.1875
 				if (#total_forms/#formSaved >=1) then 0.25
 				
 
