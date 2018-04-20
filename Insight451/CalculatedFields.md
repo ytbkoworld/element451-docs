@@ -5,6 +5,7 @@ The following variables use a "left-join" from element_user + element_applicatio
 * [ActiveTerm](#active-term)
 * [Year to Year](#yoy)
 * [Engagement Score](#engagement-score)
+* [Seed Filters](#seed-filter)
 
 
 # Funnel Stage 
@@ -120,5 +121,17 @@ if emailUnsubscribed == TRUE then emailScore == 0
 If engagementScore ==0 then "DORMANT"
 If engagementScore <0.33 then "LURKER"
 If engagementScore >=0.33 then "FAN"
+
+```
+
+# Seed Filter
+Removes seeds and test users such as "xxx@spark451.com"
+```
+IF CONTAINS(LOWER([Email]),"@spark451.com") or 
+	CONTAINS(LOWER([Email]),"test") or 
+	LOWER([First Source Code]) = "seed" 
+THEN "Y" 
+ELSE "N" 
+END
 
 ```
