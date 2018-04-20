@@ -87,26 +87,33 @@ Computes digital engagement score from email, SMS, forms, and logins
 ```
 
 #Trait Computation = "engagementScore"
-engagementScore = emailScore+smsScore+formsSaved+userLogin
+engagementScore = 0.20*emailScore + 0.20* smsScore+ 0.20*formSaved + 0.20*userLogin + 0.20*pageView
 
-emailScore = #emailClicked/#emailDelivered
-smsScore = #smsClicked/#smsDelivered
+emailScore = emailClicked/emailDelivered
+smsScore = smsClicked/smsDelivered
 
-formsSaved = 	if (#total_forms/#formSaved ==0) then 0
-				if (#total_forms/#formSaved <.25) then 0.0625
-				if (#total_forms/#formSaved <.5) then 0.125
-				if (#total_forms/#formSaved <.75) then 0.1875
-				if (#total_forms/#formSaved >=1) then 0.25
-				
+formScore =0.1*(formSave/10)+0.9*(formTotal/5)
+formSave = if (total_saves <=9) THEN total_saves
+	if (total_saves >9) THEN "10"
 
-userLogin= 	if (#dayssincelastlogin<=10) then 0.25
-			if (#dayssincelastlogin>=30) then 0.10
-			if (#dayssincelastlogin>30) then 0.05
-			
+formTotal = if (total_forms <=4) THEN total_forms
+	if (total_forms >4) THEN "5"
+ 
+userLogin= if (#dayssincelastlogin<=10) THEN "1" 
+	if (#dayssincelastlogin<=30) THEN "0.75"
+	if (#dayssincelastlogin<=60) then "0.5"
+	if (#dayssincelastlogin>60) then "0.1"
+
+pageView = if (#pageviews==1) THEN ".25" 
+	if (#pageviews<=3) ) THEN "0.5"
+	if (#pageviews<10)  THEN "0.75"
+	if (#pageviews>=10)  THEN "1"
+
 
 #Validation/Truncation
-if emailScore >.25 then emailScore == 0.25
-if smsScore >.25 then smsScore == 0.25
+if emailScore >1 then emailScore == 1
+if smsScore >1 then smsScore == 1
+if emailUnsubscribed == TRUE then emailScore == 0
 if emailUnsubscribed == TRUE then emailScore == 0
 
 #Labeling
