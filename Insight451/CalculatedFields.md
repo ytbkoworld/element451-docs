@@ -90,7 +90,7 @@ Computes digital engagement score from email, SMS, forms, and logins
 #Trait Computation = "engagementScore"
 engagementScore = 0.20*emailScore + 0.20* smsScore+ 0.20*formSaved + 0.20*userLogin + 0.20*pageView
 
-emailScore = emailClicked/emailDelivered
+emailScore = 0.9*emailClicked/emailDelivered+0.1*log(emailClicked)
 smsScore = smsClicked/smsDelivered
 
 formScore =0.1*(formSave/10)+0.9*(formTotal/5)
@@ -114,7 +114,6 @@ pageView = if (#pageviews==1) THEN ".25"
 #Validation/Truncation
 if emailScore >1 then emailScore == 1
 if smsScore >1 then smsScore == 1
-if emailUnsubscribed == TRUE then emailScore == 0
 if emailUnsubscribed == TRUE then emailScore == 0
 
 #Labeling
